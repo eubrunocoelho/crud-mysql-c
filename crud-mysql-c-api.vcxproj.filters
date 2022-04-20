@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.c">
+    <ClCompile Include="source\main.c">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
     <ClCompile Include="source\Connection.c">
