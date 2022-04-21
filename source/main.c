@@ -13,6 +13,12 @@ int main()
 	system("chcp 1252> nul");
 
 	MYSQL* conn = getConnection();
+	char nome[255];
+	int paginas;
+	char autor[255];
+
+	/*Create(conn, nome, paginas, autor);*/
+
 	char x = '0';
 
 	while (x != 'C' && x != 'c')

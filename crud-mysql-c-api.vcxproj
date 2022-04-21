@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\Create.c" />
     <ClCompile Include="source\main.c" />
     <ClCompile Include="source\Connection.c" />
     <ClCompile Include="source\Read.c" />
