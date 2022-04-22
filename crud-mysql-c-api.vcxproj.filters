@@ -18,21 +18,24 @@
     <ClCompile Include="source\main.c">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="source\functions\Connection.c">
+    <ClCompile Include="source\functions\connection.c">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="source\functions\Read.c">
+    <ClCompile Include="source\functions\read.c">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="source\functions\Create.c">
+    <ClCompile Include="source\functions\create.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="source\functions\checkData.c">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\headers\Functions.h">
+    <ClInclude Include="source\headers\functions.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="source\headers\Constants.h">
+    <ClInclude Include="source\headers\constants.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
   </ItemGroup>

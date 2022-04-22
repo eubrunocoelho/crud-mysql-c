@@ -6,7 +6,8 @@
 #ifndef FUNCTIONS_H
 
 MYSQL* getConnection();
-void Read(MYSQL* conn);
-void Create(MYSQL* conn, char nome[255], int paginas, char autor[255]);
+void read(MYSQL* conn);
+void create(MYSQL* conn, char nome[255], int paginas, char autor[255]);
+int checkData(MYSQL* conn);
 
 #endif

@@ -1,9 +1,9 @@
-#include "../headers/Functions.h"
-#include "../headers/Constants.h"
+#include "../headers/functions.h"
+#include "../headers/constants.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-void Create(MYSQL* conn, char nome[255], int paginas, char autor[255])
+void create(MYSQL* conn, char nome[255], int paginas, char autor[255])
 {
 	MYSQL* stmt;
 	MYSQL_BIND param[3];

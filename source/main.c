@@ -1,6 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include "headers/Functions.h"
-#include "headers/Constants.h"
+#include "headers/functions.h"
+#include "headers/constants.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -32,11 +32,18 @@ int main()
 			printf("--- Livros cadastrados ---\n");
 			printf("\n");
 
-			printf("\n");
-			printf("#ID - #Nome - #Páginas - #Autor\n");
-			printf("\n");
+			if (checkData(conn) == 0)
+			{
+				printf("- Nenhum livro cadastrado -");
+				printf("\n");
+			}
+			else
+			{
+				printf("#ID - #Nome - #Páginas - #Autor\n");
+				printf("\n");
 
-			Read(conn);
+				read(conn);
+			}
 		}
 
 		if (x == 'B' || x == 'b')
@@ -60,7 +67,7 @@ int main()
 
 			printf("\n");
 
-			Create(conn, toNome, paginas, toAutor);
+			create(conn, toNome, paginas, toAutor);
 		}
 
 		printf("\n--- // ---\n");

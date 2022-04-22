@@ -1,9 +1,9 @@
-#include "../headers/Functions.h"
-#include "../headers/Constants.h"
+#include "../headers/functions.h"
+#include "../headers/constants.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-void Read(MYSQL* conn)
+void read(MYSQL* conn)
 {
 	MYSQL_STMT* stmt;
 	MYSQL_BIND result[4];
