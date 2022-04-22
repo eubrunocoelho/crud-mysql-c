@@ -3,10 +3,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void create(MYSQL* conn, char nome[255], int paginas, char autor[255])
+void update(MYSQL* conn, char nome[255], int paginas, char autor[255], int ID)
 {
 	MYSQL_STMT* stmt;
-	MYSQL_BIND param[3];
+	MYSQL_BIND param[4];
 
 	stmt = mysql_stmt_init(conn);
 
@@ -16,7 +16,7 @@ void create(MYSQL* conn, char nome[255], int paginas, char autor[255])
 		exit(1);
 	}
 
-	if (mysql_stmt_prepare(stmt, CREATE, strlen(CREATE)))
+	if (mysql_stmt_prepare(stmt, UPDATE, strlen(UPDATE)))
 	{
 		fprintf(stderr, "mysql_stmt_prepare(), INSERT failed!\n");
 		fprintf(stderr, "%s\n", mysql_stmt_error(stmt));
@@ -42,6 +42,11 @@ void create(MYSQL* conn, char nome[255], int paginas, char autor[255])
 	param[2].buffer_length = 255;
 	param[2].is_null = 0;
 
+	// ID (int)
+	param[3].buffer_type = MYSQL_TYPE_LONG;
+	param[3].buffer = (char*)&ID;
+	param[3].is_null = 0;
+	
 	if (mysql_stmt_bind_param(stmt, param))
 	{
 		fprintf(stderr, "mysql_stmt_bind_param(), failed!\n");
@@ -57,7 +62,7 @@ void create(MYSQL* conn, char nome[255], int paginas, char autor[255])
 	}
 	else
 	{
-		printf("Livro cadastrado com sucesso!\n");
+		printf("Livro atualizado com sucesso!\n");
 	}
 
 	if (mysql_stmt_close(stmt))

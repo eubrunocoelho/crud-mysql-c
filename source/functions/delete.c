@@ -3,10 +3,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void create(MYSQL* conn, char nome[255], int paginas, char autor[255])
+void delete(MYSQL* conn, int ID)
 {
 	MYSQL_STMT* stmt;
-	MYSQL_BIND param[3];
+	MYSQL_BIND param[1];
+	MYSQL_RES* prepare_meta_result;
 
 	stmt = mysql_stmt_init(conn);
 
@@ -16,7 +17,7 @@ void create(MYSQL* conn, char nome[255], int paginas, char autor[255])
 		exit(1);
 	}
 
-	if (mysql_stmt_prepare(stmt, CREATE, strlen(CREATE)))
+	if (mysql_stmt_prepare(stmt, DELETE, strlen(DELETE)))
 	{
 		fprintf(stderr, "mysql_stmt_prepare(), INSERT failed!\n");
 		fprintf(stderr, "%s\n", mysql_stmt_error(stmt));
@@ -25,22 +26,10 @@ void create(MYSQL* conn, char nome[255], int paginas, char autor[255])
 
 	memset(param, 0, sizeof(param));
 
-	// nome (string)
-	param[0].buffer_type = MYSQL_TYPE_STRING;
-	param[0].buffer = (char*)nome;
-	param[0].buffer_length = 255;
+	// ID (int)
+	param[0].buffer_type = MYSQL_TYPE_LONG;
+	param[0].buffer = (char*)&ID;
 	param[0].is_null = 0;
-
-	// paginas (int)
-	param[1].buffer_type = MYSQL_TYPE_LONG;
-	param[1].buffer = (char*)&paginas;
-	param[1].is_null = 0;
-
-	// autor (string)
-	param[2].buffer_type = MYSQL_TYPE_STRING;
-	param[2].buffer = (char*)autor;
-	param[2].buffer_length = 255;
-	param[2].is_null = 0;
 
 	if (mysql_stmt_bind_param(stmt, param))
 	{
@@ -57,8 +46,12 @@ void create(MYSQL* conn, char nome[255], int paginas, char autor[255])
 	}
 	else
 	{
-		printf("Livro cadastrado com sucesso!\n");
+		printf("Livro deletado com sucesso!\n");
 	}
+
+	prepare_meta_result = mysql_stmt_result_metadata(stmt);
+
+	mysql_free_result(prepare_meta_result);
 
 	if (mysql_stmt_close(stmt))
 	{

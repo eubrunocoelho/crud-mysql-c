@@ -146,7 +146,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="source\functions\checkData.c" />
+    <ClCompile Include="source\functions\checkDataByID.c" />
     <ClCompile Include="source\functions\create.c" />
+    <ClCompile Include="source\functions\delete.c" />
+    <ClCompile Include="source\functions\update.c" />
     <ClCompile Include="source\main.c" />
     <ClCompile Include="source\functions\connection.c" />
     <ClCompile Include="source\functions\read.c" />

@@ -28,25 +28,23 @@ void read(MYSQL* conn)
 
 	memset(result, 0, sizeof(result));
 
-	/* Colunas da tabela livros */
-
-	// ID
+	// ID (int)
 	result[0].buffer_type = MYSQL_TYPE_LONG;
 	result[0].buffer = (char*)&ID;
 	result[0].is_null = 0;
 
-	// nome
+	// nome (string)
 	result[1].buffer_type = MYSQL_TYPE_STRING;
 	result[1].buffer = (char*)nome;
 	result[1].buffer_length = 255;
 	result[1].is_null = 0;
 
-	// paginas
+	// paginas (int)
 	result[2].buffer_type = MYSQL_TYPE_LONG;
 	result[2].buffer = (char*)&paginas;
 	result[2].is_null = 0;
 
-	// autor
+	// autor (string)
 	result[3].buffer_type = MYSQL_TYPE_STRING;
 	result[3].buffer = (char*)autor;
 	result[3].buffer_length = 255;

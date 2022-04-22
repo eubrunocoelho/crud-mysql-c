@@ -22,7 +22,10 @@ int main()
 		printf("Escolha as seguintes letras:\n");
 		printf("a (Para visualizar os livros cadastrado)\n");
 		printf("b (Para cadastrar um novo livro)\n");
-		printf("s (Para fechar)\n");
+		printf("c (Para atualizar dados de um livro)\n");
+		printf("d (Para deletar um livro)\n");
+		printf("s (Para sair)\n");
+
 		scanf("%c", &x);
 		printf("\n");
 
@@ -32,17 +35,17 @@ int main()
 			printf("--- Livros cadastrados ---\n");
 			printf("\n");
 
-			if (checkData(conn) == 0)
-			{
-				printf("- Nenhum livro cadastrado -");
-				printf("\n");
-			}
-			else
+			if (checkData(conn) == TRUE)
 			{
 				printf("#ID - #Nome - #Páginas - #Autor\n");
 				printf("\n");
 
 				read(conn);
+			}
+			else
+			{
+				printf("- Nenhum livro cadastrado -");
+				printf("\n");
 			}
 		}
 
@@ -68,6 +71,67 @@ int main()
 			printf("\n");
 
 			create(conn, toNome, paginas, toAutor);
+		}
+
+		if (x == 'C' || x == 'c')
+		{
+			int ID;
+
+			printf("\n");
+			printf("--- Atualizar dados ---\n");
+			printf("\n");
+
+			printf("Informe o ID do livro do livro a ser atualizado\n");
+			scanf("%d", &ID);
+			printf("\n");
+
+			if (checkDataByID(conn, ID) == TRUE)
+			{
+				char toNome[255] = "", toAutor[255] = "";
+
+				printf("Qual o nome do livro?\n");
+				scanf(" %[^\n]s", nome);
+				strncat(toNome, nome, strlen(nome));
+
+				printf("Quantas páginas tem o livro?\n");
+				scanf("%d", &paginas);
+
+				printf("Qual o nome do autor do livro?\n");
+				scanf(" %[^\n]s", autor);
+				strncat(toAutor, autor, strlen(autor));
+
+				printf("\n");
+
+				update(conn, toNome, paginas, toAutor, ID);
+			}
+			else
+			{
+				printf("- Não existe livro com o ID informado -");
+				printf("\n");
+			}
+		}
+
+		if (x == 'D' || x == 'd')
+		{
+			int ID;
+
+			printf("\n");
+			printf("--- Deletar um livro ---\n");
+			printf("\n");
+
+			printf("Informe o ID do livro do livro a ser deletado\n");
+			scanf("%d", &ID);
+			printf("\n");
+
+			if (checkDataByID(conn, ID) == TRUE)
+			{
+				delete(conn, ID);
+			}
+			else
+			{
+				printf("- Não existe livro com o ID informado -");
+				printf("\n");
+			}
 		}
 
 		printf("\n--- // ---\n");
