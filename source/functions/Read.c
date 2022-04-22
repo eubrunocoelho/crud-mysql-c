@@ -1,5 +1,5 @@
-#include "Functions.h"
-#include "Constants.h"
+#include "../headers/Functions.h"
+#include "../headers/Constants.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -8,10 +8,8 @@ void Read(MYSQL* conn)
 	MYSQL_STMT* stmt;
 	MYSQL_BIND result[4];
 	MYSQL_RES* prepare_meta_result;
-	int ID;
-	char nome[255];
-	int paginas;
-	char autor[255];
+	int ID, paginas;
+	char nome[255], autor[255];
 
 	stmt = mysql_stmt_init(conn);
 

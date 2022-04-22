@@ -1,5 +1,5 @@
-#include "Functions.h"
-#include "Constants.h"
+#include "../headers/Functions.h"
+#include "../headers/Constants.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -30,6 +30,7 @@ void Create(MYSQL* conn, char nome[255], int paginas, char autor[255])
 	param[0].buffer_length = 255;
 	param[0].is_null = 0;
 
+
 	param[1].buffer_type = MYSQL_TYPE_LONG;
 	param[1].buffer = (char*)&paginas;
 	param[1].is_null = 0;
@@ -51,6 +52,10 @@ void Create(MYSQL* conn, char nome[255], int paginas, char autor[255])
 		fprintf(stderr, "mysql_stmt_execute(), failed!\n");
 		fprintf(stderr, "%s\n", mysql_stmt_error(stmt));
 		exit(1);
+	}
+	else
+	{
+		printf("Livro cadastrado com sucesso!\n");
 	}
 
 	if (mysql_stmt_close(stmt))

@@ -145,14 +145,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="source\Create.c" />
+    <ClCompile Include="source\functions\Create.c" />
     <ClCompile Include="source\main.c" />
-    <ClCompile Include="source\Connection.c" />
-    <ClCompile Include="source\Read.c" />
+    <ClCompile Include="source\functions\Connection.c" />
+    <ClCompile Include="source\functions\Read.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\Constants.h" />
-    <ClInclude Include="source\Functions.h" />
+    <ClInclude Include="source\headers\Constants.h" />
+    <ClInclude Include="source\headers\Functions.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
